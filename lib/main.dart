@@ -1,3 +1,4 @@
+import 'package:demo/result.dart';
 import 'package:flutter/material.dart';
 
 import 'question.dart';
@@ -55,11 +56,13 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: Text('Demo'),
         ),
-        body: Questions(
-          onPressed: _answerQuestion,
-          index: _questionIndex,
-          questions: _questions,
-        ),
+        body: (_questionIndex < _questions.length)
+            ? Questions(
+                onPressed: _answerQuestion,
+                index: _questionIndex,
+                questions: _questions,
+              )
+            : Result(_totalScore, _resetQuestions),
       ),
     );
   }
